@@ -211,6 +211,20 @@ document.addEventListener('click', function (e) {
   showToast('✓  ' + dishName + ' added to cart');
 });
 
+// Logic for "Order Now" button on home page:
+// 1. If cart is empty -> scroll to #dishes (default behavior)
+// 2. If cart has items -> redirect to cart.html
+const mobileOrderBtn = document.getElementById('mobileOrderBtn');
+if (mobileOrderBtn) {
+  mobileOrderBtn.addEventListener('click', function (e) {
+    const cart = getCart();
+    if (cart.length > 0) {
+      e.preventDefault();
+      window.location.href = 'cart.html';
+    }
+  });
+}
+
 
 /* ──────────────────────────────────────────────
    6. TOAST NOTIFICATION
@@ -288,11 +302,22 @@ const cardObserver = new IntersectionObserver((entries, observer) => {
 
 // Initialize on existing cards and new clones
 function initRevealObserver() {
+  // Observe dish cards
   document.querySelectorAll('.dish-card').forEach(card => {
     if (!card.classList.contains('reveal-visible')) {
       card.classList.add('reveal-hidden');
     }
     cardObserver.observe(card);
+  });
+
+  // Observe story images
+  document.querySelectorAll('.story-reveal').forEach(img => {
+    cardObserver.observe(img);
+  });
+
+  // Observe info banner items (bubble pop)
+  document.querySelectorAll('.info-reveal').forEach(item => {
+    cardObserver.observe(item);
   });
 }
 initRevealObserver();

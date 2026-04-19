@@ -322,7 +322,19 @@
   border-color: var(--deep);
   box-shadow: var(--shadow-card);
 }
-.occasion-btn__icon { font-size: 22px; }
+.occasion-btn__icon { 
+  font-size: 22px; 
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.occasion-btn__icon svg {
+  transition: stroke var(--ease);
+}
+.occasion-btn.active .occasion-btn__icon svg {
+  stroke: var(--white) !important;
+}
 
 
 /* ── GUEST STEPPER ── */

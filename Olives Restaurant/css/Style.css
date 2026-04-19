@@ -773,6 +773,26 @@ ul {
   height: 250px;
 }
 
+/* ──────────────────────────────────────────────
+   SCROLL REVEAL ANIMATIONS (Large Screens)
+   ────────────────────────────────────────────── */
+@media (min-width: 1025px) {
+  .story-reveal {
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .story__img--1.story-reveal { transform: translateY(-60px); } /* from Top */
+  .story__img--2.story-reveal { transform: translateX(60px); }  /* from Right */
+  .story__img--3.story-reveal { transform: translateX(-60px); } /* from Left */
+  .story__img--4.story-reveal { transform: translateY(60px); }  /* from Bottom */
+
+  .story-reveal.reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+  }
+}
+
 /* "Since 2018" badge positioned at bottom center of mosaic */
 .story__badge {
   position: absolute;
@@ -1079,6 +1099,17 @@ ul {
   align-items: center;
   gap: 16px;
   color: var(--white);
+}
+
+.info-reveal {
+  opacity: 0;
+  transform: scale(0.4);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.info-reveal.reveal-visible {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .info-banner__icon {
