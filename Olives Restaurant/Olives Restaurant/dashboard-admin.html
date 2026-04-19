@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — Olives Restaurant &amp; Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard-admin.css">
+</head>
+
+<body>
+
+    <!-- ══════ MOBILE TOPBAR ══════ -->
+    <div class="mob-bar">
+        <button class="mob-bar__toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="mob-bar__brand">
+            <span class="mob-bar__logo">O</span>
+            <span class="mob-bar__label">Admin</span>
+        </div>
+        <div class="mob-bar__badge" id="mobAlertBadge" hidden>!</div>
+    </div>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ══════════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar__brand">
+            <div class="sidebar__brand-icon">O</div>
+            <div>
+                <div class="sidebar__brand-name">OLIVES</div>
+                <div class="sidebar__brand-role">Admin Console</div>
+            </div>
+            <button class="sidebar__close-btn" id="sidebarClose">✕</button>
+        </div>
+
+        <div class="sidebar__admin-card">
+            <div class="sidebar__admin-avatar">SA</div>
+            <div>
+                <div class="sidebar__admin-name">Super Admin</div>
+                <div class="sidebar__admin-role">Restaurant Manager</div>
+            </div>
+            <div class="sidebar__admin-status" title="Online"></div>
+        </div>
+
+        <nav class="sidebar__nav">
+            <div class="sidebar__group-label">Dashboard</div>
+            <button class="sidebar__btn active" data-panel="overview">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                </svg>
+                Overview
+            </button>
+
+            <div class="sidebar__group-label">Operations</div>
+            <button class="sidebar__btn" data-panel="bookings">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                Table Gatekeeper
+                <span class="sidebar__badge" id="bookingBadge">5</span>
+            </button>
+            <button class="sidebar__btn" data-panel="orders">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                Live Orders
+                <span class="sidebar__badge sidebar__badge--gold" id="orderBadge">3</span>
+            </button>
+
+            <div class="sidebar__group-label">Menu</div>
+            <button class="sidebar__btn" data-panel="menu-manager">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                    <path d="M7 2v20" />
+                    <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+                </svg>
+                Menu Manager
+            </button>
+            <button class="sidebar__btn" data-panel="discounts">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                    <line x1="7" y1="7" x2="7.01" y2="7" />
+                </svg>
+                Promos &amp; Discounts
+            </button>
+
+            <div class="sidebar__group-label">Insights</div>
+            <button class="sidebar__btn" data-panel="analytics">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10" />
+                    <line x1="12" y1="20" x2="12" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="14" />
+                </svg>
+                Analytics
+            </button>
+            <button class="sidebar__btn" data-panel="customers">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                Customers
+            </button>
+        </nav>
+
+        <div class="sidebar__footer">
+            <a href="index.html" class="sidebar__footer-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                View Live Site
+            </a>
+            <a href="auth.html" class="sidebar__footer-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+                Sign Out
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- ══════════════════════════════════════════
+       MAIN
+  ══════════════════════════════════════════ -->
+    <main class="admin-main" id="adminMain">
+
+        <!-- Desktop topbar -->
+        <header class="admin-topbar">
+            <div class="admin-topbar__left">
+                <h1 class="admin-topbar__title" id="pageTitle">Overview</h1>
+                <div class="admin-topbar__date" id="adminDate"></div>
+            </div>
+            <div class="admin-topbar__right">
+                <div class="admin-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" class="admin-search__input" placeholder="Search anything…" id="globalSearch">
+                </div>
+                <!-- Alert bell -->
+                <button class="admin-topbar__bell" id="alertBell">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                    <span class="admin-topbar__bell-dot"></span>
+                </button>
+                <div class="admin-topbar__avatar">SA</div>
+            </div>
+        </header>
+
+
+        <!-- ═══════════════ PANEL: OVERVIEW ═══════════════ -->
+        <div class="admin-panel" id="panelOverview">
+
+            <!-- KPI strip -->
+            <div class="kpi-strip">
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Revenue Today</div>
+                    <div class="kpi-card__num">UGX 1.24M</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 18% vs yesterday</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Orders Today</div>
+                    <div class="kpi-card__num">47</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 9 from yesterday</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Covers Tonight</div>
+                    <div class="kpi-card__num">68</div>
+                    <div class="kpi-card__delta kpi-card__delta--neutral">5 reservations confirmed</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Out of Stock</div>
+                    <div class="kpi-card__num" id="outOfStockCount">0</div>
+                    <div class="kpi-card__delta kpi-card__delta--warn" id="outOfStockNote">All items available</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Avg Order Value</div>
+                    <div class="kpi-card__num">UGX 26,400</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 4% this week</div>
+                </div>
+            </div>
+
+            <div class="overview-grid">
+
+                <!-- Tonight's bookings quick-list -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Tonight's Tables</h3>
+                        <button class="a-card__link" data-panel="bookings">Full view →</button>
+                    </div>
+                    <div class="tonight-list" id="tonightList"></div>
+                </div>
+
+                <!-- Live orders feed -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Live Orders</h3>
+                        <div class="live-dot"><span></span> Live</div>
+                    </div>
+                    <div class="live-orders" id="liveOrders"></div>
+                </div>
+
+                <!-- Quick stock toggle -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Quick Stock Toggle</h3>
+                        <button class="a-card__link" data-panel="menu-manager">Manage all →</button>
+                    </div>
+                    <p class="a-card__sub">Hide items customers can't order right now.</p>
+                    <div class="quick-stock" id="quickStock"></div>
+                </div>
+
+                <!-- Top sellers -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Top Sellers This Week</h3>
+                    </div>
+                    <div class="top-sellers" id="topSellers"></div>
+                </div>
+
+            </div><!-- end overview-grid -->
+        </div><!-- end panelOverview -->
+
+
+        <!-- ═══════════════ PANEL: TABLE GATEKEEPER ═══════════════ -->
+        <div class="admin-panel admin-panel--hidden" id="panelBookings">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-head__title">Table Gatekeeper</h2>
+                    <p class="panel-head__sub">Today's reservations at a glance. Seat, modify, or close bookings in real
+                        time.</p>
+                </div>
+                <div class="panel-head__actions">
+                    <button class="a-btn a-btn--outline" id="closeAllBtn">Close All Walk-ins</button>
+                    <button class="a-btn a-btn--gold" id="addBookingBtn">+ Add Walk-in</button>
+                </div>
+            </div>
+
+            <!-- Date filter + search -->
+            <div class="gate-toolbar">
+                <div class="gate-toolbar__search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" id="bookingSearch" class="gate-toolbar__input" placeholder="Search guest name…">
+                </div>
+                <select class="gate-toolbar__filter" id="bookingStatusFilter">
+                    <option value="all">All Statuses</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="seated">Seated</option>
+                    <option value="closed">Closed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <input type="date" class="gate-toolbar__date" id="bookingDateFilter">
+            </div>
+
+            <!-- Table view -->
+            <div class="a-card" style="padding:0;overflow:hidden;">
+                <table class="bk-table" id="bookingTable">
+                    <thead>
+                        <tr>
+                            <th>Guest</th>
+                            <th>Time</th>
+                            <th>Covers</th>
+                            <th>Occasion</th>
+                            <th>Table</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTableBody"></tbody>
+                </table>
+            </div>
+
+        </div><!-- end bookings -->
+
+
+        <!-- ═══════════════ PANEL: LIVE ORDERS ═══════════════ -->
+        <div class="admin-panel admin-panel--hidden" id="panelOrders">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-head__title">Live Orders</h2>
+                    <p class="panel-head__sub">Incoming delivery and dine-in orders. Update status as kitchen prepares.
+                    </p>
+                </div>
+                <div class="live-dot" style="margin-top:8px;"><span></span> Auto-refreshing</div>
+            </div>
+
+            <div class="orders-kanban" id="ordersKanban">
+                <div class="kanban-col">
+                    <div class="kanban-col__head">
+                        <span class="kanban-col__dot kanban-col__dot--new"></span>
+                        New
+                        <span class="kanban-col__count" id="colCountNew">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanNew"></div>
+                </div>
+                <div class="kanban-col">
+                    <div class="kanban-col__head">
+                        <span class="kanban-col__dot kanban-col__dot--prep"></span>
+                        Preparing
+                        <span class="kanban-col__count" id="colCountPrep">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanPrep"></div>
+                </div>
+                <div class="kanban-col">
+                    <div class="kanban-col__head">
+                        <span class="kanban-col__dot kanban-col__dot--ready"></span>
+                        Ready
+                        <span class="kanban-col__count" id="colCountReady">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanReady"></div>
+                </div>
+                <div class="kanban-col">
+                    <div class="kanban-col__head">
+                        <span class="kanban-col__dot kanban-col__dot--done"></span>
+                        Delivered
+                        <span class="kanban-col__count" id="colCountDone">0</span>
+                    </div>
+                    <div class="kanban-cards" id="kanbanDone"></div>
+                </div>
+            </div>
+
+        </div><!-- end orders -->
+
+
+        <!-- ═══════════════ PANEL: MENU MANAGER ═══════════════ -->
+        <div class="admin-panel admin-panel--hidden" id="panelMenuManager">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-head__title">Menu Manager</h2>
+                    <p class="panel-head__sub">Toggle availability, edit descriptions, pricing, and add new dishes — no
+                        code needed.</p>
+                </div>
+                <div class="panel-head__actions">
+                    <div class="menu-search-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="menuManagerSearch" class="gate-toolbar__input"
+                            placeholder="Search dishes…">
+                    </div>
+                    <button class="a-btn a-btn--gold" id="addDishBtn">+ Add New Dish</button>
+                </div>
+            </div>
+
+            <!-- Category filter tabs -->
+            <div class="menu-tabs" id="menuTabs">
+                <button class="menu-tab active" data-cat="All">All</button>
+                <button class="menu-tab" data-cat="Italian">🍝 Italian</button>
+                <button class="menu-tab" data-cat="Indian">🍛 Indian</button>
+                <button class="menu-tab" data-cat="Healthy">🥗 Healthy</button>
+                <button class="menu-tab" data-cat="Breakfast">🥞 Breakfast</button>
+                <button class="menu-tab" data-cat="Desserts">🍮 Desserts</button>
+                <button class="menu-tab" data-cat="Drinks">🍹 Drinks</button>
+            </div>
+
+            <!-- Menu items table -->
+            <div class="a-card" style="padding:0;overflow:hidden;">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>Dish</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Tag</th>
+                            <th>Rating</th>
+                            <th>Available</th>
+                            <th>Discount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="menuTableBody"></tbody>
+                </table>
+            </div>
+
+        </div><!-- end menu manager -->
+
+
+        <!-- ═══════════════ PANEL: DISCOUNTS ═══════════════ -->
+        <div class="admin-panel admin-panel--hidden" id="panelDiscounts">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-head__title">Promos &amp; Discounts</h2>
+                    <p class="panel-head__sub">Create seasonal deals, festive discounts, and promo codes without
+                        touching the codebase.</p>
+                </div>
+                <button class="a-btn a-btn--gold" id="addPromoBtn">+ New Promo</button>
+            </div>
+
+            <!-- Active promos -->
+            <div class="promo-grid" id="promoGrid"></div>
+
+            <!-- Promo code manager -->
+            <div class="a-card" style="margin-top:24px;">
+                <div class="a-card__head">
+                    <h3 class="a-card__title">Promo Codes</h3>
+                    <button class="a-btn a-btn--outline" id="addCodeBtn" style="padding:6px 14px;font-size:12px;">+ New
+                        Code</button>
+                </div>
+                <table class="menu-table" id="promoCodesTable">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            <th>Uses</th>
+                            <th>Expires</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="promoCodesBody"></tbody>
+                </table>
+            </div>
+
+        </div><!-- end discounts -->
+
+
+        <!-- ═══════════════ PANEL: ANALYTICS ═══════════════ -->
+        <div class="admin-panel admin-panel--hidden" id="panelAnalytics">
+
+            <div class="panel-head">
+                <h2 class="panel-head__title">Analytics</h2>
+                <p class="panel-head__sub">Revenue trends, popular dishes, and peak hours at a glance.</p>
+            </div>
+
+            <div class="kpi-strip">
+                <div class="kpi-card">
+                    <div class="kpi-card__label">This Week</div>
+                    <div class="kpi-card__num">UGX 7.8M</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 12% vs last week</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">This Month</div>
+                    <div class="kpi-card__num">UGX 31.2M</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 8% vs last month</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Total Orders</div>
+                    <div class="kpi-card__num">1,240</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 6% this month</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-card__label">Repeat Customers</div>
+                    <div class="kpi-card__num">68%</div>
+                    <div class="kpi-card__delta kpi-card__delta--up">↑ 3% this quarter</div>
+                </div>
+            </div>
+
+            <div class="analytics-grid">
+
+                <!-- Revenue bar chart (CSS-only) -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Daily Revenue — This Week</h3>
+                    </div>
+                    <div class="bar-chart">
+                        <div class="bar-chart__bars">
+                            <div class="bar-wrap">
+                                <div class="bar" style="height:55%"></div>
+                                <div class="bar-label">Mon</div>
+                                <div class="bar-val">1.1M</div>
+                            </div>
+                            <div class="bar-wrap">
+                                <div class="bar" style="height:70%"></div>
+                                <div class="bar-label">Tue</div>
+                                <div class="bar-val">1.4M</div>
+                            </div>
+                            <div class="bar-wrap">
+                                <div class="bar" style="height:48%"></div>
+                                <div class="bar-label">Wed</div>
+                                <div class="bar-val">950K</div>
+                            </div>
+                            <div class="bar-wrap">
+                                <div class="bar" style="height:85%"></div>
+                                <div class="bar-label">Thu</div>
+                                <div class="bar-val">1.7M</div>
+                            </div>
+                            <div class="bar-wrap">
+                                <div class="bar" style="height:100%"></div>
+                                <div class="bar-label">Fri</div>
+                                <div class="bar-val">2.0M</div>
+                            </div>
+                            <div class="bar-wrap">
+                                <div class="bar bar--gold" style="height:90%"></div>
+                                <div class="bar-label">Sat</div>
+                                <div class="bar-val">1.8M</div>
+                            </div>
+                            <div class="bar-wrap">
+                                <div class="bar" style="height:60%"></div>
+                                <div class="bar-label">Sun</div>
+                                <div class="bar-val">1.2M</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peak hours heatmap -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Peak Hours (Orders)</h3>
+                    </div>
+                    <div class="heatmap" id="heatmap"></div>
+                    <div class="heatmap-legend">
+                        <span>Quiet</span>
+                        <div class="heatmap-legend__scale"></div>
+                        <span>Busy</span>
+                    </div>
+                </div>
+
+                <!-- Top dishes table -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Best-Performing Dishes</h3>
+                    </div>
+                    <div class="top-dish-list">
+                        <div class="top-dish"><span class="top-dish__rank top-dish__rank--1">1</span><span
+                                class="top-dish__name">Butter Chicken Tikka</span><span class="top-dish__orders">142
+                                orders</span><span class="top-dish__rev">UGX 4.5M</span></div>
+                        <div class="top-dish"><span class="top-dish__rank top-dish__rank--2">2</span><span
+                                class="top-dish__name">Ugandan Lamb Biryani</span><span class="top-dish__orders">118
+                                orders</span><span class="top-dish__rev">UGX 4.4M</span></div>
+                        <div class="top-dish"><span class="top-dish__rank top-dish__rank--3">3</span><span
+                                class="top-dish__name">Grilled Sea Bass</span><span class="top-dish__orders">97
+                                orders</span><span class="top-dish__rev">UGX 4.3M</span></div>
+                        <div class="top-dish"><span class="top-dish__rank">4</span><span class="top-dish__name">Warm
+                                Chocolate Fondant</span><span class="top-dish__orders">91 orders</span><span
+                                class="top-dish__rev">UGX 1.8M</span></div>
+                        <div class="top-dish"><span class="top-dish__rank">5</span><span class="top-dish__name">Kampala
+                                Sunset Spritz</span><span class="top-dish__orders">88 orders</span><span
+                                class="top-dish__rev">UGX 1.9M</span></div>
+                    </div>
+                </div>
+
+                <!-- Customer segments donut (CSS) -->
+                <div class="a-card">
+                    <div class="a-card__head">
+                        <h3 class="a-card__title">Order Channels</h3>
+                    </div>
+                    <div class="donut-wrap">
+                        <div class="donut">
+                            <div class="donut__center">1,240<br><small>Orders</small></div>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="donut-legend__item"><span class="dl-dot dl-dot--1"></span>Dine In — 48%</div>
+                            <div class="donut-legend__item"><span class="dl-dot dl-dot--2"></span>Delivery — 35%</div>
+                            <div class="donut-legend__item"><span class="dl-dot dl-dot--3"></span>Reservations — 17%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- end analytics-grid -->
+        </div><!-- end analytics -->
+
+
+        <!-- ═══════════════ PANEL: CUSTOMERS ═══════════════ -->
+        <div class="admin-panel admin-panel--hidden" id="panelCustomers">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-head__title">Customers</h2>
+                    <p class="panel-head__sub">View registered customers, their tiers, and visit history.</p>
+                </div>
+                <div class="admin-search" style="max-width:280px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" class="admin-search__input" id="custSearch" placeholder="Search customers…">
+                </div>
+            </div>
+
+            <div class="a-card" style="padding:0;overflow:hidden;">
+                <table class="menu-table" id="custTable">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Email</th>
+                            <th>Tier</th>
+                            <th>Total Orders</th>
+                            <th>Total Spent</th>
+                            <th>Last Visit</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="custTableBody"></tbody>
+                </table>
+            </div>
+
+        </div><!-- end customers -->
+
+    </main><!-- end admin-main -->
+
+
+    <!-- ══════════════════════════════════════════
+       MODALS (shared)
+  ══════════════════════════════════════════ -->
+
+    <!-- Edit / Add Dish modal -->
+    <div class="modal-backdrop" id="dishModalBackdrop" hidden></div>
+    <div class="modal" id="dishModal" hidden>
+        <div class="modal__head">
+            <h3 class="modal__title" id="dishModalTitle">Edit Dish</h3>
+            <button class="modal__close" id="dishModalClose">✕</button>
+        </div>
+        <div class="modal__body">
+            <div class="modal-grid">
+                <div class="form-g"><label class="form-l">Dish Name</label><input type="text" id="dmName" class="form-i"
+                        placeholder="e.g. Truffle Arancini"></div>
+                <div class="form-g"><label class="form-l">Category</label>
+                    <select id="dmCat" class="form-i">
+                        <option>Italian</option>
+                        <option>Indian</option>
+                        <option>Healthy</option>
+                        <option>Breakfast</option>
+                        <option>Desserts</option>
+                        <option>Drinks</option>
+                    </select>
+                </div>
+                <div class="form-g"><label class="form-l">Price (UGX)</label><input type="number" id="dmPrice"
+                        class="form-i" placeholder="28000"></div>
+                <div class="form-g"><label class="form-l">Tag</label><input type="text" id="dmTag" class="form-i"
+                        placeholder="Bestseller / Chef's Pick…"></div>
+                <div class="form-g"><label class="form-l">Rating</label><input type="number" id="dmRating"
+                        class="form-i" min="1" max="5" step="0.1" placeholder="4.8"></div>
+                <div class="form-g"><label class="form-l">Discount %</label><input type="number" id="dmDiscount"
+                        class="form-i" min="0" max="100" placeholder="0"></div>
+                <div class="form-g form-g--full"><label class="form-l">Short Description</label><input type="text"
+                        id="dmShortDesc" class="form-i" placeholder="One-line teaser…"></div>
+                <div class="form-g form-g--full"><label class="form-l">Full Description</label><textarea id="dmFullDesc"
+                        class="form-ta" rows="4"
+                        placeholder="Detailed description diners will read on the dish page…"></textarea></div>
+                <div class="form-g form-g--full"><label class="form-l">Ingredients (comma-separated)</label><input
+                        type="text" id="dmIngredients" class="form-i"
+                        placeholder="Arborio rice, Black truffle, Parmigiano…"></div>
+                <div class="form-g form-g--full"><label class="form-l">Image URL</label><input type="text" id="dmImage"
+                        class="form-i" placeholder="https://…"></div>
+                <div class="form-g" style="display:flex;align-items:center;gap:10px;padding-top:6px;">
+                    <label class="form-l" style="margin:0;">Available to Order</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="dmAvailable" checked>
+                        <span class="toggle-switch__track"><span class="toggle-switch__thumb"></span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="modal__foot">
+            <button class="a-btn a-btn--outline" id="dishModalCancel">Cancel</button>
+            <button class="a-btn a-btn--gold" id="dishModalSave">Save Dish</button>
+        </div>
+    </div>
+
+    <!-- Promo modal -->
+    <div class="modal-backdrop" id="promoModalBackdrop" hidden></div>
+    <div class="modal" id="promoModal" hidden>
+        <div class="modal__head">
+            <h3 class="modal__title">New Promotion</h3>
+            <button class="modal__close" id="promoModalClose">✕</button>
+        </div>
+        <div class="modal__body">
+            <div class="modal-grid">
+                <div class="form-g form-g--full"><label class="form-l">Promotion Name</label><input type="text"
+                        id="pmName" class="form-i" placeholder="e.g. Easter Weekend Special"></div>
+                <div class="form-g"><label class="form-l">Discount %</label><input type="number" id="pmDiscount"
+                        class="form-i" min="1" max="100" placeholder="20"></div>
+                <div class="form-g"><label class="form-l">Applies To</label>
+                    <select id="pmScope" class="form-i">
+                        <option value="all">All Menu Items</option>
+                        <option value="Italian">Italian Only</option>
+                        <option value="Indian">Indian Only</option>
+                        <option value="Desserts">Desserts Only</option>
+                        <option value="Drinks">Drinks Only</option>
+                    </select>
+                </div>
+                <div class="form-g"><label class="form-l">Start Date</label><input type="date" id="pmStart"
+                        class="form-i"></div>
+                <div class="form-g"><label class="form-l">End Date</label><input type="date" id="pmEnd" class="form-i">
+                </div>
+                <div class="form-g form-g--full"><label class="form-l">Banner Text</label><input type="text"
+                        id="pmBanner" class="form-i" placeholder="🎉 Easter Special — 20% off all Italian dishes!">
+                </div>
+            </div>
+        </div>
+        <div class="modal__foot">
+            <button class="a-btn a-btn--outline" id="promoModalCancel">Cancel</button>
+            <button class="a-btn a-btn--gold" id="promoModalSave">Create Promo</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="admin-toast" id="adminToast" role="status"></div>
+
+    <script src="js/menu.js"></script>
+    <script src="js/dashboard-admin.js"></script>
+</body>
+
+</html>
