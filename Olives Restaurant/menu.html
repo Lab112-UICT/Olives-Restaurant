@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Menu — Olives Restaurant &amp; Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+  <!-- ═══════════════ NAV (shared) ═══════════════ -->
+  <nav class="nav" id="navbar">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-main">OLIVES</span>
+        <span class="nav__logo-sub">Restaurant &amp; Bar</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html#story"         class="nav__link">Our Story</a></li>
+        <li><a href="menu.html"               class="nav__link nav__link--active">Menu</a></li>
+        <li><a href="reservations.html"       class="nav__link">Reservations</a></li>
+        <li><a href="reservations.html#contact" class="nav__link">Contact</a></li>
+        <li class="nav__login-mobile"><a href="auth.html" class="btn-login">Login</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button class="nav__cart-btn" id="cartBtn" aria-label="View cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="nav__cart-count" id="cartCount" hidden>0</span>
+        </button>
+        <a href="reservations.html" class="btn btn--gold nav__reserve-btn">Reserve a Table</a>
+        <a href="auth.html" class="btn-login">Login</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════ MENU HERO ═══════════════ -->
+  <header class="menu-hero">
+    <div class="menu-hero__bg"></div>
+    <div class="menu-hero__overlay"></div>
+    <div class="container menu-hero__content">
+      <span class="menu-hero__eyebrow">Naguru, Kampala</span>
+      <h1 class="menu-hero__title">Our<br><em class="text-gold-shine">Menu</em></h1>
+      <p class="menu-hero__sub">Premium Steaks · Fresh Seafood · Signature Wings · Wood-Fired Pizzas</p>
+    </div>
+    <!-- Decorative gold vine (SVG drawn by CSS) -->
+    <div class="menu-hero__vine"></div>
+  </header>
+
+
+  <!-- ═══════════════ STICKY CATEGORY NAV ═══════════════ -->
+  <div class="cat-nav" id="catNav">
+    <div class="container cat-nav__inner">
+      <button class="cat-nav__btn active" data-cat="All">All</button>
+      <button class="cat-nav__btn" data-cat="Appetizers">
+        <span class="cat-nav__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8Z"/><path d="M10 2v3"/><path d="M14 2v3"/><path d="M6 2v3"/></svg>
+        </span> 
+        Appetizers
+      </button>
+      <button class="cat-nav__btn" data-cat="Meats">
+        <span class="cat-nav__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11 5.5 5.5a2.5 2.5 0 0 1-3.5 3.5L11.5 14.5"/><path d="M13 10a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2Z"/><path d="M10.5 14.5c-2.3 2.3-5.6 1.8-8.2-.8s-3.1-5.9-.8-8.2c2.3-2.3 5.6-1.8 8.2.8s3.1 5.9.8 8.2Z"/></svg>
+        </span> 
+        Meats &amp; Chicken
+      </button>
+      <button class="cat-nav__btn" data-cat="Seafood">
+        <span class="cat-nav__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c.5 0 1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5s1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5s1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5"/><path d="M7 10h.01"/><path d="M12 2c5 0 9 4 9 9s-4 9-9 9a11.66 11.66 0 0 1-7-2.5 4 4 0 0 0-3 0C2 14 2 12 2 11s0-9 10-9Z"/></svg>
+        </span> 
+        Seafood
+      </button>
+      <button class="cat-nav__btn" data-cat="Pizzas">
+        <span class="cat-nav__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11h.01"/><path d="M11 15h.01"/><path d="M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16Z"/><path d="M22 22 16 16"/></svg>
+        </span> 
+        Pizzas
+      </button>
+      <button class="cat-nav__btn" data-cat="Sides">
+        <span class="cat-nav__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M21 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M12 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M3 12h18"/><path d="M3 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </span> 
+        Sides
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════ MENU GRID ═══════════════ -->
+  <main class="menu-main">
+    <div class="container">
+
+      <!-- Search bar -->
+      <div class="menu-search reveal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="menu-search__input" placeholder="Search dishes…">
+      </div>
+
+      <!-- Results count -->
+      <p class="menu-count" id="menuCount">Showing all dishes</p>
+
+      <!-- The grid — populated by JS -->
+      <div class="menu-grid" id="menuGrid"></div>
+
+    </div>
+  </main>
+
+
+  <!-- ═══════════════ DETAIL PANEL (slide-in) ═══════════════ -->
+  <!-- This stays on the same page. JS fills in the content. -->
+  <div class="detail-backdrop" id="detailBackdrop"></div>
+
+  <aside class="detail-panel" id="detailPanel" aria-hidden="true">
+
+    <!-- Desktop: X close button (visible on desktop only) -->
+    <button class="detail-panel__close" id="detailClose" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Mobile: sticky back bar pinned to top of panel -->
+    <div class="detail-panel__mobile-bar" id="mobileBackBar">
+      <button class="detail-panel__mobile-back" id="mobileBackBtn" aria-label="Back to menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Menu
+      </button>
+      <span class="detail-panel__mobile-name" id="mobileBarName"></span>
+    </div>
+    <!-- Left: content -->
+    <div class="detail-panel__body">
+
+      <span class="detail-panel__cat" id="dCat"></span>
+      <h2 class="detail-panel__name" id="dName"></h2>
+
+      <div class="detail-panel__meta">
+        <span class="detail-panel__rating" id="dRating"></span>
+        <span class="detail-panel__tag"   id="dTag"></span>
+      </div>
+
+      <p class="detail-panel__desc" id="dDesc"></p>
+
+      <div class="detail-panel__ingredients" id="dIngredients"></div>
+
+      <div class="detail-panel__nutrition" id="dNutrition"></div>
+
+      <div class="detail-panel__order">
+        <div class="detail-panel__price" id="dPrice"></div>
+
+        <!-- Quantity stepper -->
+        <div class="qty-stepper">
+          <button class="qty-stepper__btn" id="qtyMinus" aria-label="Decrease">−</button>
+          <span class="qty-stepper__val" id="qtyVal">1</span>
+          <button class="qty-stepper__btn" id="qtyPlus"  aria-label="Increase">+</button>
+        </div>
+
+        <button class="btn btn--gold detail-panel__add-btn" id="detailAddBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Add to Order
+        </button>
+        <a href="index.html#reservations" class="btn btn--outline detail-panel__reserve-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Reserve &amp; Dine In
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Right: full bleed photo -->
+    <div class="detail-panel__photo-wrap">
+      <img src="" alt="" class="detail-panel__photo" id="dPhoto">
+      <div class="detail-panel__photo-overlay"></div>
+    </div>
+
+  </aside>
+
+
+  <!-- ═══════════════ MOBILE STICKY CTA ═══════════════ -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="index.html#reservations" class="btn btn--deep btn--mobile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Table
+    </a>
+    <button class="btn btn--gold btn--mobile" id="mobileCartBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      View Order
+      <span class="mobile-cta__badge" id="mobileBadge" hidden>0</span>
+    </button>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — Olives Restaurant &amp; Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+    <!-- ══════════════════════════════════════
+       BACK NAVIGATION BAR
+  ══════════════════════════════════════ -->
+    <div class="auth-topbar">
+        <button class="auth-topbar__back" id="backBtn"
+            onclick="history.length > 1 ? history.back() : window.location.href='index.html'" aria-label="Go back">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Back
+        </button>
+        <a href="index.html" class="auth-topbar__logo">
+            <span class="auth-topbar__logo-main">OLIVES</span>
+            <span class="auth-topbar__logo-sub">Restaurant &amp; Bar</span>
+        </a>
+        <div class="auth-topbar__right">
+            <span class="auth-topbar__hint" id="topHint">New here?</span>
+            <button class="auth-topbar__switch" id="topSwitch">Create Account</button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════
+       MAIN AUTH WRAPPER
+  ══════════════════════════════════════ -->
+    <div class="auth-wrap">
+
+        <!-- ── IMAGE PANEL ── -->
+        <div class="auth-img-panel" id="imgPanel">
+
+            <!-- Back to home pill — overlaid on image -->
+            <a href="index.html" class="auth-img-panel__home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+                Home
+            </a>
+
+            <!-- Two images — swapped by JS on mode toggle -->
+            <img id="authImgLogin" class="auth-img-panel__img auth-img-panel__img--active"
+                src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=900&h=1100&fit=crop&q=80"
+                alt="Grilled Sea Bass">
+            <img id="authImgRegister" class="auth-img-panel__img"
+                src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=900&h=1100&fit=crop&q=80"
+                alt="Ugandan Lamb Biryani">
+
+            <!-- Gradient overlay -->
+            <div class="auth-img-panel__overlay"></div>
+
+            <!-- Bottom text card -->
+            <div class="auth-img-panel__caption">
+                <div class="auth-img-panel__caption-eyebrow">Olives Restaurant &amp; Bar</div>
+                <h2 class="auth-img-panel__caption-title" id="imgTitle">
+                    Welcome<br><em>Back.</em>
+                </h2>
+                <p class="auth-img-panel__caption-sub" id="imgSub">
+                    Sign in to manage your orders, bookings, and preferences.
+                </p>
+                <!-- Floating dish tag -->
+                <div class="auth-img-panel__dish-tag" id="imgDishTag">
+                    <span class="auth-img-panel__dish-tag-dot"></span>
+                    Grilled Sea Bass — UGX 45,000
+                </div>
+            </div>
+
+            <!-- Decorative pattern -->
+            <div class="auth-img-panel__pattern" aria-hidden="true"></div>
+
+        </div><!-- end img panel -->
+
+
+        <!-- ── FORM PANEL ── -->
+        <div class="auth-form-panel" id="formPanel">
+            <div class="auth-form-panel__inner">
+
+                <!-- ════ LOGIN FORM ════ -->
+                <div class="auth-form" id="formLogin">
+
+                    <div class="auth-form__head">
+                        <div class="auth-form__eyebrow">Welcome back</div>
+                        <h1 class="auth-form__title">Sign In</h1>
+                        <p class="auth-form__sub">Enter your details to access your account.</p>
+                    </div>
+
+                    <!-- Social buttons -->
+                    <div class="social-btns">
+                        <button class="social-btn social-btn--google" type="button">
+                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                    fill="#4285F4" />
+                                <path
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                    fill="#34A853" />
+                                <path
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                                    fill="#FBBC05" />
+                                <path
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                    fill="#EA4335" />
+                            </svg>
+                            Continue with Google
+                        </button>
+                        <div class="social-btns__row">
+                            <button class="social-btn social-btn--apple" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                                </svg>
+                                Apple
+                            </button>
+                            <button class="social-btn social-btn--facebook" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                                Facebook
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-divider">
+                        <span class="auth-divider__line"></span>
+                        <span class="auth-divider__text">or sign in with email</span>
+                        <span class="auth-divider__line"></span>
+                    </div>
+
+                    <!-- Email / password -->
+                    <div class="auth-field">
+                        <label class="auth-field__label" for="loginEmail">Email Address</label>
+                        <div class="auth-field__wrap">
+                            <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="loginEmail" class="auth-field__input" placeholder="your@email.com"
+                                autocomplete="email">
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <div class="auth-field__label-row">
+                            <label class="auth-field__label" for="loginPassword">Password</label>
+                            <button class="auth-field__forgot" type="button">Forgot password?</button>
+                        </div>
+                        <div class="auth-field__wrap">
+                            <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="loginPassword" class="auth-field__input" placeholder="••••••••"
+                                autocomplete="current-password">
+                            <button class="auth-field__toggle-pw" type="button" aria-label="Show password"
+                                data-target="loginPassword">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <label class="auth-checkbox">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="auth-checkbox__mark"></span>
+                        Keep me signed in
+                    </label>
+
+                    <button class="auth-submit" id="loginSubmit" type="button">
+                        <span class="auth-submit__shimmer"></span>
+                        <span class="auth-submit__text">Sign In</span>
+                    </button>
+
+                    <p class="auth-form__switch-text">
+                        Don't have an account?
+                        <button class="auth-form__switch-link" data-target="register">Create one free</button>
+                    </p>
+
+                </div><!-- end login form -->
+
+
+                <!-- ════ REGISTER FORM ════ -->
+                <div class="auth-form auth-form--hidden" id="formRegister">
+
+                    <div class="auth-form__head">
+                        <div class="auth-form__eyebrow">Join Olives</div>
+                        <h1 class="auth-form__title">Create Account</h1>
+                        <p class="auth-form__sub">Start your culinary journey with us.</p>
+                    </div>
+
+                    <!-- Social buttons -->
+                    <div class="social-btns">
+                        <button class="social-btn social-btn--google" type="button">
+                            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                    fill="#4285F4" />
+                                <path
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                    fill="#34A853" />
+                                <path
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                                    fill="#FBBC05" />
+                                <path
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                    fill="#EA4335" />
+                            </svg>
+                            Sign up with Google
+                        </button>
+                        <div class="social-btns__row">
+                            <button class="social-btn social-btn--apple" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                                </svg>
+                                Apple
+                            </button>
+                            <button class="social-btn social-btn--facebook" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                                Facebook
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-divider">
+                        <span class="auth-divider__line"></span>
+                        <span class="auth-divider__text">or use your email</span>
+                        <span class="auth-divider__line"></span>
+                    </div>
+
+                    <div class="auth-field-row">
+                        <div class="auth-field">
+                            <label class="auth-field__label" for="regFirst">First Name</label>
+                            <div class="auth-field__wrap">
+                                <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                <input type="text" id="regFirst" class="auth-field__input" placeholder="Amara"
+                                    autocomplete="given-name">
+                            </div>
+                        </div>
+                        <div class="auth-field">
+                            <label class="auth-field__label" for="regLast">Last Name</label>
+                            <div class="auth-field__wrap">
+                                <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                                <input type="text" id="regLast" class="auth-field__input" placeholder="Nakato"
+                                    autocomplete="family-name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <label class="auth-field__label" for="regEmail">Email Address</label>
+                        <div class="auth-field__wrap">
+                            <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="regEmail" class="auth-field__input" placeholder="your@email.com"
+                                autocomplete="email">
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <label class="auth-field__label" for="regPhone">Phone Number</label>
+                        <div class="auth-field__wrap">
+                            <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <input type="tel" id="regPhone" class="auth-field__input" placeholder="+256 7XX XXX XXX"
+                                autocomplete="tel">
+                        </div>
+                    </div>
+
+                    <div class="auth-field">
+                        <label class="auth-field__label" for="regPassword">Password</label>
+                        <div class="auth-field__wrap">
+                            <svg class="auth-field__icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="regPassword" class="auth-field__input" placeholder="••••••••"
+                                autocomplete="new-password">
+                            <button class="auth-field__toggle-pw" type="button" aria-label="Show password"
+                                data-target="regPassword">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- Strength meter -->
+                        <div class="pw-strength" id="pwStrength" hidden>
+                            <div class="pw-strength__bars">
+                                <div class="pw-strength__bar" id="pwBar1"></div>
+                                <div class="pw-strength__bar" id="pwBar2"></div>
+                                <div class="pw-strength__bar" id="pwBar3"></div>
+                                <div class="pw-strength__bar" id="pwBar4"></div>
+                            </div>
+                            <span class="pw-strength__label" id="pwLabel">Weak</span>
+                        </div>
+                    </div>
+
+                    <label class="auth-checkbox">
+                        <input type="checkbox" id="agreeTerms">
+                        <span class="auth-checkbox__mark"></span>
+                        I agree to the
+                        <a href="#" class="auth-checkbox__link">Terms of Service</a>
+                        and
+                        <a href="#" class="auth-checkbox__link">Privacy Policy</a>
+                    </label>
+
+                    <button class="auth-submit" id="registerSubmit" type="button">
+                        <span class="auth-submit__shimmer"></span>
+                        <span class="auth-submit__text">Create My Account</span>
+                    </button>
+
+                    <p class="auth-form__switch-text">
+                        Already have an account?
+                        <button class="auth-form__switch-link" data-target="login">Sign in here</button>
+                    </p>
+
+                </div><!-- end register form -->
+
+            </div><!-- end inner -->
+        </div><!-- end form panel -->
+
+    </div><!-- end auth-wrap -->
+
+
+    <!-- Toast -->
+    <div class="auth-toast" id="authToast" role="status"></div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>
