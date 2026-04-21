@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drinks Menu — Olives Restaurant &amp; Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/drinks.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav nav--drinks" id="navbar">
+    <div class="nav__container">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-main">OLIVES</span>
+        <span class="nav__logo-sub">Restaurant &amp; Bar</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html#story" class="nav__link">Our Story</a></li>
+        <li><a href="menu.html" class="nav__link nav__link--active">Menu</a></li>
+        <li><a href="reservations.html" class="nav__link">Reservations</a></li>
+        <li><a href="reservations.html#contact" class="nav__link">Contact</a></li>
+        <li class="nav__login-mobile"><a href="auth.html" class="btn-login">Login</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="reservations.html" class="btn btn--gold nav__reserve-btn">Reserve a Table</a>
+        <a href="auth.html" class="btn-login">Login</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="drinks-hero">
+    <div class="drinks-hero__bg"></div>
+    <div class="drinks-hero__overlay"></div>
+    <div class="container drinks-hero__content">
+      <div class="drinks-hero__eyebrow">
+        <span class="drinks-hero__eyebrow-line"></span>
+        <span>Crafted With Care</span>
+      </div>
+      <h1 class="drinks-hero__title">Sip Into<br><em>The Art of Flavour.</em></h1>
+      <p class="drinks-hero__sub">
+        From hand-crafted cocktails to fine wines and locally-inspired brews — every glass at Olives tells a story. Come dine, sip, and experience the craft behind every pour.
+      </p>
+      <div class="drinks-hero__badges">
+        <span class="drinks-hero__badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M17 2H7l2 8h6l2-8Z"/></svg>
+          Signature Cocktails
+        </span>
+        <span class="drinks-hero__badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          Curated Wines
+        </span>
+        <span class="drinks-hero__badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
+          Fresh Juices
+        </span>
+      </div>
+    </div>
+    <div class="drinks-hero__vine"></div>
+  </header>
+
+  <!-- CATEGORY NAV -->
+  <div class="dcat-nav" id="dcatNav">
+    <div class="container dcat-nav__inner">
+      <button class="dcat-nav__btn active" data-cat="all">All</button>
+      <button class="dcat-nav__btn" data-cat="cocktails">
+        <span class="dcat-nav__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#103A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M17 2H7l2 8h6l2-8Z"/></svg></span>
+        Cocktails
+      </button>
+      <button class="dcat-nav__btn" data-cat="wines">
+        <span class="dcat-nav__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#103A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-1-3-2-4l-3-3.5L9 6c-1 1-2 2-2 4a5 5 0 0 0 5 5Z"/></svg></span>
+        Wines
+      </button>
+      <button class="dcat-nav__btn" data-cat="beers">
+        <span class="dcat-nav__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#103A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></span>
+        Beers
+      </button>
+      <button class="dcat-nav__btn" data-cat="non-alcoholic">
+        <span class="dcat-nav__icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#103A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 2H8.6c-.4 0-.8.2-.9.6L5.3 10c-.1.3 0 .5.2.7l.5.4c.2.2.5.3.8.3H18c.3 0 .6-.1.8-.3l.5-.4c.2-.2.3-.4.2-.7L17.1 2.6c-.1-.4-.5-.6-.9-.6Z"/><path d="m12 10 1 12"/><path d="m8 22h8"/></svg></span>
+        Non-Alcoholic
+      </button>
+      <a href="menu.html" class="back-to-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Food
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="drinks-main">
+    <div class="container">
+
+      <div class="drinks-intro">
+        <div class="drinks-intro__eyebrow">
+          <span class="drinks-intro__line"></span>
+          Our Selection
+          <span class="drinks-intro__line"></span>
+        </div>
+        <h2 class="drinks-intro__heading">Handpicked for Every Moment</h2>
+        <p class="drinks-intro__sub">Whether you're celebrating, unwinding, or pairing with your meal — we've got the perfect drink waiting for you.</p>
+      </div>
+
+      <!-- COCKTAILS -->
+      <div class="drinks-section" data-section="cocktails">
+        <h3 class="drinks-section__heading">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M17 2H7l2 8h6l2-8Z"/></svg>
+          Signature Cocktails
+        </h3>
+        <div class="drinks-grid" id="cocktailsGrid">
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=500&h=400&fit=crop&q=80" alt="Naguru Sunset" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--signature">Signature</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Naguru Sunset</div>
+              <div class="drink-card__desc">Passion fruit, vodka, elderflower liqueur with a hint of fresh mint — served over crushed ice.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 32,000</span>
+                <span class="drink-card__ask">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  Ask waiter
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&h=400&fit=crop&q=80" alt="Kampala Mule" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--popular">Popular</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Kampala Mule</div>
+              <div class="drink-card__desc">Local ginger beer, premium vodka, fresh lime juice with a copper-mug finish and rosemary sprig.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 28,000</span>
+                <span class="drink-card__tag">🌿 Refreshing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1587223962930-cb7f31384c19?w=500&h=400&fit=crop&q=80" alt="Olive Garden Spritz" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--new">New</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Olive Garden Spritz</div>
+              <div class="drink-card__desc">Prosecco, Aperol, muddled basil leaves, and a splash of soda — our twist on the classic spritz.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 35,000</span>
+                <span class="drink-card__tag">✨ House Special</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- WINES -->
+      <div class="drinks-section" data-section="wines">
+        <h3 class="drinks-section__heading">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-1-3-2-4l-3-3.5L9 6c-1 1-2 2-2 4a5 5 0 0 0 5 5Z"/></svg>
+          Wines
+        </h3>
+        <div class="drinks-grid">
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=500&h=400&fit=crop&q=80" alt="Cabernet Sauvignon" class="drink-card__img">
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Cabernet Sauvignon</div>
+              <div class="drink-card__desc">Full-bodied South African red with notes of blackcurrant, cedar, and dark chocolate.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 45,000</span>
+                <span class="drink-card__tag">🍷 Red</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1566754436655-e77bbb0a54fe?w=500&h=400&fit=crop&q=80" alt="Chardonnay" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--popular">Popular</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Chardonnay</div>
+              <div class="drink-card__desc">Crisp Chilean white with tropical fruit notes and a buttery, oak-kissed finish.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 40,000</span>
+                <span class="drink-card__tag">🥂 White</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1558001373-7b93ee48ffa0?w=500&h=400&fit=crop&q=80" alt="Rosé" class="drink-card__img">
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Provençal Rosé</div>
+              <div class="drink-card__desc">Light, dry French rosé with delicate strawberry and citrus notes — perfect for warm Kampala evenings.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 42,000</span>
+                <span class="drink-card__tag">🌸 Rosé</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BEERS -->
+      <div class="drinks-section" data-section="beers">
+        <h3 class="drinks-section__heading">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
+          Beers &amp; Ciders
+        </h3>
+        <div class="drinks-grid">
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500&h=400&fit=crop&q=80" alt="Nile Special" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--popular">Local</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Nile Special Lager</div>
+              <div class="drink-card__desc">Uganda's favourite lager — smooth, crisp, and perfectly paired with our grilled meats.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 8,000</span>
+                <span class="drink-card__tag">🇺🇬 Local</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=500&h=400&fit=crop&q=80" alt="Tusker" class="drink-card__img">
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Tusker Malt</div>
+              <div class="drink-card__desc">Premium East African malt lager with a rich, full-bodied taste and golden finish.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 10,000</span>
+                <span class="drink-card__tag">🍺 Premium</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=500&h=400&fit=crop&q=80" alt="Apple Cider" class="drink-card__img">
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Savanna Dry Cider</div>
+              <div class="drink-card__desc">Dry and refreshing South African cider with a clean apple finish.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 12,000</span>
+                <span class="drink-card__tag">🍏 Cider</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NON-ALCOHOLIC -->
+      <div class="drinks-section" data-section="non-alcoholic">
+        <h3 class="drinks-section__heading">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/></svg>
+          Fresh Juices &amp; Mocktails
+        </h3>
+        <div class="drinks-grid">
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=500&h=400&fit=crop&q=80" alt="Tropical Splash" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--signature">Signature</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Tropical Splash</div>
+              <div class="drink-card__desc">Mango, pineapple, and passion fruit blended with coconut water and a ginger kick.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 15,000</span>
+                <span class="drink-card__tag">🥭 Tropical</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=500&h=400&fit=crop&q=80" alt="Hibiscus Lemonade" class="drink-card__img">
+              <span class="drink-card__badge drink-card__badge--new">New</span>
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Hibiscus Lemonade</div>
+              <div class="drink-card__desc">Locally sourced hibiscus flowers steeped with fresh lemon, honey, and sparkling water.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 12,000</span>
+                <span class="drink-card__tag">🌺 Floral</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="drink-card reveal-visible">
+            <div class="drink-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&h=400&fit=crop&q=80" alt="Fresh Watermelon" class="drink-card__img">
+            </div>
+            <div class="drink-card__body">
+              <div class="drink-card__name">Watermelon Mint Cooler</div>
+              <div class="drink-card__desc">Freshly pressed watermelon with muddled mint and a squeeze of lime — pure refreshment.</div>
+              <div class="drink-card__footer">
+                <span class="drink-card__price">UGX 10,000</span>
+                <span class="drink-card__tag">🍉 Fresh</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EXPERIENCE BANNER -->
+      <div class="drinks-exp-banner">
+        <h2 class="drinks-exp-banner__title">Every Glass Tells a Story</h2>
+        <p class="drinks-exp-banner__sub">Join us at Olives for a curated drinks experience — from craft cocktails to rare wines, best enjoyed alongside our signature dishes.</p>
+        <a href="reservations.html" class="drinks-exp-banner__cta">
+          Reserve Your Table
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__logo">
+        <span class="footer__logo-main">OLIVES</span>
+        <span class="footer__logo-sub">Restaurant &amp; Bar · Naguru</span>
+      </div>
+      <div class="footer__social">
+        <a href="#" class="footer__social-link">Instagram</a>
+        <a href="#" class="footer__social-link">Facebook</a>
+        <a href="#" class="footer__social-link">WhatsApp</a>
+      </div>
+      <div class="footer__copy">© 2025 Olives Restaurant &amp; Bar. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="drinks-mobile-back">
+    <a href="menu.html" class="drinks-mobile-back__menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Food Menu
+    </a>
+    <a href="reservations.html" class="drinks-mobile-back__reserve">
+      Reserve a Table
+    </a>
+  </div>
+
+  <script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--open');
+      hamburger.classList.toggle('nav__hamburger--active');
+    });
+  }
+
+  // Category filter
+  const catBtns = document.querySelectorAll('.dcat-nav__btn');
+  const sections = document.querySelectorAll('.drinks-section');
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      sections.forEach(s => {
+        if (cat === 'all' || s.dataset.section === cat) {
+          s.removeAttribute('hidden');
+        } else {
+          s.setAttribute('hidden', '');
+        }
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>
