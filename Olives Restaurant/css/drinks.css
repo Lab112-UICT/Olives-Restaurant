@@ -625,6 +625,12 @@
 }
 
 @media (max-width: 768px) {
+  /* Override for mobile nav drawer to match drinks theme */
+  .nav--drinks .nav__links {
+    background: linear-gradient(135deg, var(--drinks-cream) 0%, var(--drinks-sage) 100%);
+    border-left: 1px solid rgba(16, 58, 87, 0.1);
+  }
+
   .drinks-mobile-back {
     display: flex;
     position: fixed;

@@ -6,25 +6,38 @@
 /* ──────────────────────────────────────────────
    1. NAV
    ────────────────────────────────────────────── */
-const navbar    = document.getElementById('navbar');
+const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('navLinks');
+const navLinks = document.getElementById('navLinks');
+
+// Create overlay
+const navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
+
+function closeMenu() {
+  if(navLinks) navLinks.classList.remove('open');
+  if(hamburger) hamburger.classList.remove('open');
+  navOverlay.classList.remove('show');
+}
 
 window.addEventListener('scroll', function () {
-  navbar.classList.toggle('scrolled', window.scrollY > 55);
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 55);
 });
 
-hamburger.addEventListener('click', function () {
-  const open = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open', open);
-});
-
-navLinks.querySelectorAll('.nav__link').forEach(function (link) {
-  link.addEventListener('click', function () {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    navOverlay.classList.toggle('show', isOpen);
   });
-});
+
+  navOverlay.addEventListener('click', closeMenu);
+
+  navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+}
 
 
 /* ──────────────────────────────────────────────
@@ -64,16 +77,16 @@ function showToast(msg) {
    4. BOOKING WIZARD STATE
    ────────────────────────────────────────────── */
 const state = {
-  occasion : 'Casual Dining',
-  date     : '',
-  time     : '7:00 PM',
-  guests   : 2,
+  occasion: 'Casual Dining',
+  date: '',
+  time: '7:00 PM',
+  guests: 2,
   firstName: '',
-  lastName : '',
-  email    : '',
-  phone    : '',
-  dietary  : [],
-  requests : ''
+  lastName: '',
+  email: '',
+  phone: '',
+  dietary: [],
+  requests: ''
 };
 
 
@@ -108,7 +121,7 @@ function goToSuccess() {
 /* Update the progress indicator dots */
 function updateProgress(activeStep) {
   const steps = document.querySelectorAll('.wizard-progress__step');
-  const lines  = document.querySelectorAll('.wizard-progress__line');
+  const lines = document.querySelectorAll('.wizard-progress__line');
 
   steps.forEach(function (el, i) {
     const stepNum = i + 1;
@@ -147,7 +160,7 @@ document.querySelectorAll('.time-slot:not(.unavailable)').forEach(function (btn)
 let guestCount = 2;
 
 function updateGuestDisplay() {
-  document.getElementById('guestNum').textContent  = guestCount;
+  document.getElementById('guestNum').textContent = guestCount;
   document.querySelector('.guest-stepper__word').textContent = guestCount === 1 ? 'guest' : 'guests';
   state.guests = guestCount;
 }
@@ -184,10 +197,10 @@ document.getElementById('backTo1').addEventListener('click', function () { goToS
 /* ── STEP 2 → STEP 3 ── */
 document.getElementById('toStep3').addEventListener('click', function () {
   state.firstName = document.getElementById('firstName').value.trim();
-  state.lastName  = document.getElementById('lastName').value.trim();
-  state.email     = document.getElementById('resEmail').value.trim();
-  state.phone     = document.getElementById('resPhone').value.trim();
-  state.requests  = document.getElementById('specialReq').value.trim();
+  state.lastName = document.getElementById('lastName').value.trim();
+  state.email = document.getElementById('resEmail').value.trim();
+  state.phone = document.getElementById('resPhone').value.trim();
+  state.requests = document.getElementById('specialReq').value.trim();
 
   // Gather dietary checkboxes
   state.dietary = [];
@@ -214,12 +227,12 @@ function buildSummary() {
   });
 
   rows.innerHTML = [
-    ['Occasion',  state.occasion],
-    ['Date',      dateFormatted],
-    ['Time',      state.time],
-    ['Guests',    state.guests + (state.guests === 1 ? ' guest' : ' guests')],
-    ['Name',      state.firstName + ' ' + state.lastName],
-    ['Contact',   state.email],
+    ['Occasion', state.occasion],
+    ['Date', dateFormatted],
+    ['Time', state.time],
+    ['Guests', state.guests + (state.guests === 1 ? ' guest' : ' guests')],
+    ['Name', state.firstName + ' ' + state.lastName],
+    ['Contact', state.email],
     state.dietary.length ? ['Dietary', state.dietary.join(', ')] : null,
     state.requests ? ['Request', state.requests] : null
   ].filter(Boolean).map(function (row) {
@@ -254,9 +267,9 @@ document.getElementById('newBookingBtn').addEventListener('click', function () {
   // Reset form fields
   document.getElementById('resDate').value = '';
   document.getElementById('firstName').value = '';
-  document.getElementById('lastName').value  = '';
-  document.getElementById('resEmail').value  = '';
-  document.getElementById('resPhone').value  = '';
+  document.getElementById('lastName').value = '';
+  document.getElementById('resEmail').value = '';
+  document.getElementById('resPhone').value = '';
   document.getElementById('specialReq').value = '';
   document.querySelectorAll('.diet-chip input').forEach(function (cb) { cb.checked = false; });
   document.querySelectorAll('.diet-chip').forEach(function (chip) { chip.style.background = ''; chip.style.color = ''; });
@@ -277,7 +290,7 @@ document.getElementById('newBookingBtn').addEventListener('click', function () {
    5. OPENING HOURS — highlight today
    ────────────────────────────────────────────── */
 (function () {
-  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const today = days[new Date().getDay()];
 
   const rows = document.querySelectorAll('.hours-row');
@@ -293,8 +306,8 @@ document.getElementById('newBookingBtn').addEventListener('click', function () {
   });
 
   const hoursToday = document.getElementById('hoursToday');
-  const isWeekend  = today === 'Saturday' || today === 'Sunday';
-  const hours      = isWeekend
+  const isWeekend = today === 'Saturday' || today === 'Sunday';
+  const hours = isWeekend
     ? (today === 'Saturday' ? '9:00 AM – 11:00 PM' : '9:00 AM – 10:00 PM')
     : '11:00 AM – 10:30 PM';
   hoursToday.textContent = '📍 We are open today — ' + today + ' ' + hours;
@@ -305,12 +318,12 @@ document.getElementById('newBookingBtn').addEventListener('click', function () {
    6. CONTACT FORM SEND
    ────────────────────────────────────────────── */
 document.getElementById('contactSendBtn').addEventListener('click', function () {
-  const name    = document.getElementById('cName').value.trim();
-  const email   = document.getElementById('cEmail').value.trim();
+  const name = document.getElementById('cName').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
   const subject = document.getElementById('cSubject').value;
   const message = document.getElementById('cMessage').value.trim();
 
-  if (!name)    { showToast('⚠  Please enter your name'); return; }
+  if (!name) { showToast('⚠  Please enter your name'); return; }
   if (!email || !email.includes('@')) { showToast('⚠  Please enter a valid email'); return; }
   if (!subject) { showToast('⚠  Please select a subject'); return; }
   if (!message) { showToast('⚠  Please write a message'); return; }
@@ -325,8 +338,8 @@ document.getElementById('contactSendBtn').addEventListener('click', function () 
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       Send Message`;
 
-    document.getElementById('cName').value    = '';
-    document.getElementById('cEmail').value   = '';
+    document.getElementById('cName').value = '';
+    document.getElementById('cEmail').value = '';
     document.getElementById('cSubject').value = '';
     document.getElementById('cMessage').value = '';
 
@@ -340,8 +353,8 @@ document.getElementById('contactSendBtn').addEventListener('click', function () 
    ────────────────────────────────────────────── */
 document.querySelectorAll('.faq__q').forEach(function (btn) {
   btn.addEventListener('click', function () {
-    const item    = btn.closest('.faq__item');
-    const isOpen  = item.classList.contains('open');
+    const item = btn.closest('.faq__item');
+    const isOpen = item.classList.contains('open');
 
     // Close all first
     document.querySelectorAll('.faq__item').forEach(function (i) {
@@ -369,8 +382,8 @@ const resLink = document.querySelector('a[href="reservations.html"]');
 
 if (contactSection && contactLink && resLink) {
   let isFirst = true;
-  const contactObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
+  const contactObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         contactLink.classList.add('nav__link--active');
         resLink.classList.remove('nav__link--active');

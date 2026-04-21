@@ -2,7 +2,7 @@
    OLIVES RESTAURANT & BAR — menu.js
    ═══════════════════════════════════════════════ */
 
-(function() {
+(function () {
   'use strict';
 
   /* ──────────────────────────────────────────────
@@ -395,25 +395,25 @@
   window.DISHES = DISHES;
 
   const CAT_META = {
-    Appetizers: { 
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8Z"/><path d="M10 2v3"/><path d="M14 2v3"/><path d="M6 2v3"/></svg>`, 
-      label: "Appetizers, Wings & Bites" 
+    Appetizers: {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8Z"/><path d="M10 2v3"/><path d="M14 2v3"/><path d="M6 2v3"/></svg>`,
+      label: "Appetizers, Wings & Bites"
     },
-    Meats: { 
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11 5.5 5.5a2.5 2.5 0 0 1-3.5 3.5L11.5 14.5"/><path d="M13 10a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2Z"/><path d="M10.5 14.5c-2.3 2.3-5.6 1.8-8.2-.8s-3.1-5.9-.8-8.2c2.3-2.3 5.6-1.8 8.2.8s3.1 5.9.8 8.2Z"/></svg>`, 
-      label: "Meats & Chicken" 
+    Meats: {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 11 5.5 5.5a2.5 2.5 0 0 1-3.5 3.5L11.5 14.5"/><path d="M13 10a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2Z"/><path d="M10.5 14.5c-2.3 2.3-5.6 1.8-8.2-.8s-3.1-5.9-.8-8.2c2.3-2.3 5.6-1.8 8.2.8s3.1 5.9.8 8.2Z"/></svg>`,
+      label: "Meats & Chicken"
     },
-    Seafood: { 
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c.5 0 1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5s1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5s1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5"/><path d="M7 10h.01"/><path d="M12 2c5 0 9 4 9 9s-4 9-9 9a11.66 11.66 0 0 1-7-2.5 4 4 0 0 0-3 0C2 14 2 12 2 11s0-9 10-9Z"/></svg>`, 
-      label: "Seafood" 
+    Seafood: {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c.5 0 1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5s1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5s1 0 1.5-.5a2 2 0 0 1 3 0c.5.5 1 .5 1.5.5"/><path d="M7 10h.01"/><path d="M12 2c5 0 9 4 9 9s-4 9-9 9a11.66 11.66 0 0 1-7-2.5 4 4 0 0 0-3 0C2 14 2 12 2 11s0-9 10-9Z"/></svg>`,
+      label: "Seafood"
     },
-    Pizzas: { 
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11h.01"/><path d="M11 15h.01"/><path d="M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16Z"/><path d="M22 22 16 16"/></svg>`, 
-      label: "Pizzas" 
+    Pizzas: {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 11h.01"/><path d="M11 15h.01"/><path d="M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16Z"/><path d="M22 22 16 16"/></svg>`,
+      label: "Pizzas"
     },
-    Sides: { 
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M21 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M12 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M3 12h18"/><path d="M3 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>`, 
-      label: "Sides" 
+    Sides: {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M21 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M12 14c.83 0 1.5.67 1.5 1.5a1.5 1.5 0 0 1-3 0c0-.83.67-1.5 1.5-1.5Z"/><path d="M3 12h18"/><path d="M3 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>`,
+      label: "Sides"
     }
   };
 
@@ -426,7 +426,7 @@
   function buildCard(dish) {
     const card = document.createElement("article");
     card.className = "menu-card";
-    card.dataset.id  = dish.id;
+    card.dataset.id = dish.id;
     card.dataset.cat = dish.cat;
 
     card.innerHTML = `
@@ -510,12 +510,12 @@
      3. FILTER & SEARCH
      ────────────────────────────────────────────── */
   let activeFilter = "All";
-  let searchQuery  = "";
+  let searchQuery = "";
 
   function getFiltered() {
     return DISHES.filter(d => {
-      const catMatch    = activeFilter === "All" || d.cat === activeFilter;
-      const q           = searchQuery.toLowerCase();
+      const catMatch = activeFilter === "All" || d.cat === activeFilter;
+      const q = searchQuery.toLowerCase();
       const searchMatch = q === "" ||
         d.name.toLowerCase().includes(q) ||
         d.shortDesc.toLowerCase().includes(q) ||
@@ -527,7 +527,7 @@
   /* ──────────────────────────────────────────────
      4. DETAIL PANEL
      ────────────────────────────────────────────── */
-  const panel    = document.getElementById("detailPanel");
+  const panel = document.getElementById("detailPanel");
   const backdrop = document.getElementById("detailBackdrop");
   let qty = 1;
   let currentDish = null;
@@ -587,7 +587,7 @@
      5. CART & TOAST
      ────────────────────────────────────────────── */
   const CART_KEY = "olives_cart";
-  const cartLoad = () => { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ return []; } };
+  const cartLoad = () => { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { return []; } };
   const cartSave = (items) => localStorage.setItem(CART_KEY, JSON.stringify(items));
 
   function cartAddItem(dish, q) {
@@ -647,7 +647,7 @@
   /* ──────────────────────────────────────────────
      7. INITIALIZATION
      ────────────────────────────────────────────── */
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     renderMenu(DISHES);
     updateCartBadges();
 
@@ -657,14 +657,28 @@
 
     /* Hamburger */
     const hamburger = document.getElementById("hamburger");
-    const navLinks  = document.getElementById("navLinks");
+    const navLinks = document.getElementById("navLinks");
     if (hamburger && navLinks) {
+      const navOverlay = document.createElement('div');
+      navOverlay.className = 'nav-overlay';
+      document.body.appendChild(navOverlay);
+
+      const closeMenu = () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        navOverlay.classList.remove('show');
+      };
+
       hamburger.addEventListener("click", () => {
         const open = navLinks.classList.toggle("open");
         hamburger.classList.toggle("open", open);
+        navOverlay.classList.toggle('show', open);
       });
+
+      navOverlay.addEventListener('click', closeMenu);
+
       navLinks.querySelectorAll(".nav__link").forEach(link => {
-        link.addEventListener("click", () => { navLinks.classList.remove("open"); hamburger.classList.remove("open"); });
+        link.addEventListener("click", closeMenu);
       });
     }
 
@@ -684,17 +698,17 @@
 
     /* Detail Panel Controls */
     const dClose = document.getElementById("detailClose");
-    const mBack  = document.getElementById("mobileBackBtn");
+    const mBack = document.getElementById("mobileBackBtn");
     if (dClose) dClose.addEventListener("click", closeDetail);
-    if (mBack)  mBack.addEventListener("click", closeDetail);
+    if (mBack) mBack.addEventListener("click", closeDetail);
     if (backdrop) backdrop.addEventListener("click", closeDetail);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
 
     const qMinus = document.getElementById("qtyMinus");
-    const qPlus  = document.getElementById("qtyPlus");
-    const qVal   = document.getElementById("qtyVal");
+    const qPlus = document.getElementById("qtyPlus");
+    const qVal = document.getElementById("qtyVal");
     if (qMinus) qMinus.addEventListener("click", () => { if (qty > 1) { qty--; if (qVal) qVal.textContent = qty; } });
-    if (qPlus)  qPlus.addEventListener("click", () => { if (qty < 20) { qty++; if (qVal) qVal.textContent = qty; } });
+    if (qPlus) qPlus.addEventListener("click", () => { if (qty < 20) { qty++; if (qVal) qVal.textContent = qty; } });
 
     const dAdd = document.getElementById("detailAddBtn");
     if (dAdd) dAdd.addEventListener("click", () => {

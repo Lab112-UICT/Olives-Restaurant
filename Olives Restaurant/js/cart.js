@@ -362,21 +362,34 @@ var navbar    = document.getElementById('navbar');
 var hamburger = document.getElementById('hamburger');
 var navLinks  = document.getElementById('navLinks');
 
+// Create overlay
+var navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
+
+function closeMenu() {
+  if (navLinks) navLinks.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
+  navOverlay.classList.remove('show');
+}
+
 window.addEventListener('scroll', function () {
-  navbar.classList.toggle('scrolled', window.scrollY > 55);
+  if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 55);
 });
 
-hamburger.addEventListener('click', function () {
-  var open = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open', open);
-});
-
-navLinks.querySelectorAll('.nav__link').forEach(function (link) {
-  link.addEventListener('click', function () {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function () {
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    navOverlay.classList.toggle('show', isOpen);
   });
-});
+
+  navOverlay.addEventListener('click', closeMenu);
+
+  navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+}
 
 /* Nav cart icon stays on cart page */
 document.getElementById('cartBtn').addEventListener('click', function () {

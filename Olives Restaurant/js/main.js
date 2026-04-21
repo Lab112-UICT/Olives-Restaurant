@@ -23,19 +23,31 @@ window.addEventListener('scroll', function () {
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', function () {
-  // Toggle the open class on both elements
-  const isOpen = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-});
+// Create overlay
+const navOverlay = document.createElement('div');
+navOverlay.className = 'nav-overlay';
+document.body.appendChild(navOverlay);
 
-// Close mobile menu when any nav link is clicked
-navLinks.querySelectorAll('.nav__link').forEach(function (link) {
-  link.addEventListener('click', function () {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
+function closeMenu() {
+  if(navLinks) navLinks.classList.remove('open');
+  if(hamburger) hamburger.classList.remove('open');
+  navOverlay.classList.remove('show');
+}
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function () {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    navOverlay.classList.toggle('show', isOpen);
   });
-});
+
+  navOverlay.addEventListener('click', closeMenu);
+
+  // Close mobile menu when any nav link is clicked
+  navLinks.querySelectorAll('.nav__link').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+}
 
 
 /* ──────────────────────────────────────────────

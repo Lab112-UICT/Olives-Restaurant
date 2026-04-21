@@ -510,6 +510,8 @@ ul {
   border: none;
   cursor: pointer;
   padding: 6px;
+  z-index: 1000;
+  position: relative;
 }
 
 .nav__hamburger span {
@@ -534,22 +536,25 @@ ul {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile nav drawer — toggled by JS */
-.nav__links.open {
-  display: flex !important;
-  flex-direction: column;
+/* Nav overlay for mobile */
+.nav-overlay {
   position: fixed;
-  top: 70px;
-  left: 0;
-  right: 0;
-  background: var(--forest);
-  padding: 24px;
-  gap: 22px;
-  border-bottom: 1px solid rgba(227, 180, 60, 0.12);
-  animation: fadeUp 0.3s ease;
-  z-index: 999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
+.nav-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile nav link styles (drawer behavior in media query) */
 .nav__links.open .nav__link {
   font-size: 14px;
   letter-spacing: 1.5px;
@@ -782,10 +787,26 @@ ul {
     transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  .story__img--1.story-reveal { transform: translateY(-60px); } /* from Top */
-  .story__img--2.story-reveal { transform: translateX(60px); }  /* from Right */
-  .story__img--3.story-reveal { transform: translateX(-60px); } /* from Left */
-  .story__img--4.story-reveal { transform: translateY(60px); }  /* from Bottom */
+  .story__img--1.story-reveal {
+    transform: translateY(-60px);
+  }
+
+  /* from Top */
+  .story__img--2.story-reveal {
+    transform: translateX(60px);
+  }
+
+  /* from Right */
+  .story__img--3.story-reveal {
+    transform: translateX(-60px);
+  }
+
+  /* from Left */
+  .story__img--4.story-reveal {
+    transform: translateY(60px);
+  }
+
+  /* from Bottom */
 
   .story-reveal.reveal-visible {
     opacity: 1;
@@ -1378,9 +1399,27 @@ input[type="date"]::-webkit-calendar-picker-indicator {
    ────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Hide desktop nav links and actions */
+  /* Mobile nav drawer */
   .nav__links {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: -10px;
+    bottom: -20px;
+    right: -100%;
+    width: 60%;
+    height: 115vh;
+    background: var(--forest);
+    padding: 110px 24px 44px;
+    gap: 22px;
+    transition: right 0.4s ease;
+    z-index: 999;
+    border-left: 1px solid rgba(227, 180, 60, 0.12);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav__links.open {
+    right: 0;
   }
 
   .nav__actions {
